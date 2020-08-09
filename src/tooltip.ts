@@ -5,10 +5,18 @@ class Tooltip extends HTMLElement {
 	}
 
 	// Whenever we need to access the DOM
-	connectedCallback() {
+	public connectedCallback() {
 		const tooltipIcon = document.createElement('span')
 		tooltipIcon.textContent = ' (?) '
+
+		tooltipIcon.addEventListener('mouseenter', this.showToolTip.bind(this))
 		this.appendChild(tooltipIcon)
+	}
+
+	private showToolTip() {
+		const tooltipContainer = document.createElement('div')
+		tooltipContainer.textContent = 'This a toolTip Content!'
+		this.appendChild(tooltipContainer)
 	}
 }
 
