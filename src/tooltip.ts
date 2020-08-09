@@ -8,11 +8,13 @@ class Tooltip extends HTMLElement {
 		console.log('Tooltip being created!')
 		this.tooltipText = 'Default ToolTip Text!'
 		this.attachShadow({ mode: 'open' })
-		const toolTipTemplate = document.querySelector(
-			'#tooltip-template'
-		) as HTMLTemplateElement
+		// const toolTipTemplate = document.querySelector(
+		// 	'#tooltip-template'
+		// ) as HTMLTemplateElement
 
-		this.shadowRoot?.appendChild(toolTipTemplate.content.cloneNode(true))
+		// this.shadowRoot?.appendChild(toolTipTemplate.content.cloneNode(true))
+		// Alterantive to using templates
+		this.shadowRoot!.innerHTML = `<slot></slot><span> (?) </span>`
 	}
 
 	// Whenever we need to access the DOM
