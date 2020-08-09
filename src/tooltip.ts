@@ -2,11 +2,17 @@ class Tooltip extends HTMLElement {
 	private tooltipContainer!: HTMLDivElement
 	private tooltipText!: string
 
+	// Here i can access normal light Dom and shadowRoot
 	constructor() {
 		super()
 		console.log('Tooltip being created!')
 		this.tooltipText = 'Default ToolTip Text!'
 		this.attachShadow({ mode: 'open' })
+		const toolTipTemplate = document.querySelector(
+			'#tooltip-template'
+		) as HTMLTemplateElement
+
+		this.shadowRoot?.appendChild(toolTipTemplate.content.cloneNode(true))
 	}
 
 	// Whenever we need to access the DOM
@@ -15,8 +21,7 @@ class Tooltip extends HTMLElement {
 			this.tooltipText = this.getAttribute('text')!
 		}
 
-		const tooltipIcon = document.createElement('span')
-		tooltipIcon.textContent = ' (?) '
+		const tooltipIcon = this.shadowRoot!.querySelector('span')!
 
 		tooltipIcon.addEventListener('mouseenter', this.showTooltip.bind(this))
 		tooltipIcon.addEventListener('mouseleave', this.hideTooltip.bind(this))
