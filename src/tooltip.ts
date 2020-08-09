@@ -14,7 +14,10 @@ class Tooltip extends HTMLElement {
 
 		// this.shadowRoot?.appendChild(toolTipTemplate.content.cloneNode(true))
 		// Alterantive to using templates
-		this.shadowRoot!.innerHTML = `<slot></slot><span> (?) </span>`
+		this.shadowRoot!.innerHTML = `
+		<slot>Some Default</slot>
+		<span> (?) </span>
+		`
 	}
 
 	// Whenever we need to access the DOM
