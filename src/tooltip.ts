@@ -8,13 +8,22 @@ class Tooltip extends HTMLElement {
 		console.log('Tooltip being created!')
 		this.tooltipText = 'Default ToolTip Text!'
 		this.attachShadow({ mode: 'open' })
-		// const toolTipTemplate = document.querySelector(
-		// 	'#tooltip-template'
-		// ) as HTMLTemplateElement
 
-		// this.shadowRoot?.appendChild(toolTipTemplate.content.cloneNode(true))
 		// Alterantive to using templates
 		this.shadowRoot!.innerHTML = `
+
+		<style>
+
+			div {
+				background-color: black;
+				color: white;
+				position: absolute;
+				z-index: 10
+
+			}
+
+		</style>
+
 		<slot>Some Default</slot>
 		<span> (?) </span>
 		`
@@ -39,10 +48,10 @@ class Tooltip extends HTMLElement {
 		this.tooltipContainer = document.createElement('div')
 		this.tooltipContainer.textContent = this.tooltipText
 
-		this.tooltipContainer.style.backgroundColor = 'black'
-		this.tooltipContainer.style.color = 'white'
-		this.tooltipContainer.style.position = 'absolute'
-		this.tooltipContainer.style.zIndex = '10'
+		// this.tooltipContainer.style.backgroundColor = 'black'
+		// this.tooltipContainer.style.color = 'white'
+		// this.tooltipContainer.style.position = 'absolute'
+		// this.tooltipContainer.style.zIndex = '10'
 		this.shadowRoot!.appendChild(this.tooltipContainer)
 	}
 
