@@ -21,11 +21,17 @@ class Tooltip extends HTMLElement {
 		tooltipIcon.addEventListener('mouseleave', this.hideTooltip.bind(this))
 
 		this.appendChild(tooltipIcon)
+		this.style.position = 'relative'
 	}
 
 	private showTooltip() {
 		this.tooltipContainer = document.createElement('div')
 		this.tooltipContainer.textContent = this.tooltipText
+
+		this.tooltipContainer.style.backgroundColor = 'black'
+		this.tooltipContainer.style.color = 'white'
+		this.tooltipContainer.style.position = 'absolute'
+		this.tooltipContainer.style.zIndex = '10'
 		this.appendChild(this.tooltipContainer)
 	}
 
