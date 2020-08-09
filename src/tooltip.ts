@@ -6,6 +6,7 @@ class Tooltip extends HTMLElement {
 		super()
 		console.log('Tooltip being created!')
 		this.tooltipText = 'Default ToolTip Text!'
+		this.attachShadow({ mode: 'open' })
 	}
 
 	// Whenever we need to access the DOM
@@ -20,8 +21,8 @@ class Tooltip extends HTMLElement {
 		tooltipIcon.addEventListener('mouseenter', this.showTooltip.bind(this))
 		tooltipIcon.addEventListener('mouseleave', this.hideTooltip.bind(this))
 
-		this.appendChild(tooltipIcon)
 		this.style.position = 'relative'
+		this.shadowRoot!.appendChild(tooltipIcon)
 	}
 
 	private showTooltip() {
@@ -32,11 +33,11 @@ class Tooltip extends HTMLElement {
 		this.tooltipContainer.style.color = 'white'
 		this.tooltipContainer.style.position = 'absolute'
 		this.tooltipContainer.style.zIndex = '10'
-		this.appendChild(this.tooltipContainer)
+		this.shadowRoot!.appendChild(this.tooltipContainer)
 	}
 
 	private hideTooltip() {
-		this.removeChild(this.tooltipContainer)
+		this.shadowRoot!.removeChild(this.tooltipContainer)
 	}
 }
 
