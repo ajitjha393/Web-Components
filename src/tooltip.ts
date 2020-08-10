@@ -22,6 +22,10 @@ class Tooltip extends HTMLElement {
 
 			}
 
+			.highlight {
+				background-color: red;
+			}
+
 		</style>
 
 		<slot>Some Default</slot>
