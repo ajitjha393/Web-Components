@@ -11,7 +11,6 @@ class Tooltip extends HTMLElement {
 
 		// Alterantive to using templates
 		this.shadowRoot!.innerHTML = `
-
 		<style>
 
 			div {
@@ -21,6 +20,11 @@ class Tooltip extends HTMLElement {
 				z-index: 10
 
 			}
+
+			:host {
+				background-color: #ccc;
+			}
+
 			::slotted(.highlight) {
 				border-bottom: 2px dotted red;
 			}
