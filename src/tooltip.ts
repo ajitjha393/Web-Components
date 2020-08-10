@@ -21,7 +21,7 @@ class Tooltip extends HTMLElement {
 
 			}
 
-			:host {
+			:host(.important) {
 				background-color: #ccc;
 			}
 
