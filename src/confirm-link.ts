@@ -1,0 +1,1 @@
+class ConfirmLink extends HTMLAnchorElement {}
