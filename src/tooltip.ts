@@ -1,5 +1,4 @@
 class Tooltip extends HTMLElement {
-	// private tooltipContainer!: HTMLDivElement
 	private tooltipIcon!: HTMLSpanElement
 	private tooltipText!: string
 	private tooltipVisible = false
