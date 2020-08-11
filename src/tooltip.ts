@@ -13,6 +13,10 @@ class Tooltip extends HTMLElement {
 		// Alterantive to using templates
 		this.shadowRoot!.innerHTML = `
 		<style>
+			
+			:host {
+				position: relative;
+			}		
 
 			div {
 				font-weight: normal;
@@ -31,6 +35,8 @@ class Tooltip extends HTMLElement {
 			:host(.important) {
 				background-color: var(--color-primary,#ccc);
 				padding: 0.2rem;
+
+				
 			}
 
 			:host-context(p) {
@@ -66,8 +72,6 @@ class Tooltip extends HTMLElement {
 
 		this.tooltipIcon.addEventListener('mouseenter', this.showTooltip.bind(this))
 		this.tooltipIcon.addEventListener('mouseleave', this.hideTooltip.bind(this))
-
-		this.style.position = 'relative'
 	}
 
 	public attributeChangedCallback(
