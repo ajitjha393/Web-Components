@@ -67,7 +67,6 @@ class Tooltip extends HTMLElement {
 		tooltipIcon.addEventListener('mouseleave', this.hideTooltip.bind(this))
 
 		this.style.position = 'relative'
-		this.shadowRoot!.appendChild(tooltipIcon)
 	}
 
 	public attributeChangedCallback(
