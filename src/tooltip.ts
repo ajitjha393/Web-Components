@@ -75,7 +75,12 @@ class Tooltip extends HTMLElement {
 		oldValue: string,
 		newValue: string
 	) {
-		console.log(name, oldValue, newValue)
+		// console.log(name, oldValue, newValue)
+		if (oldValue === newValue) return
+
+		if (name === 'text') {
+			this.tooltipText = newValue
+		}
 	}
 
 	static get observedAttributes() {
