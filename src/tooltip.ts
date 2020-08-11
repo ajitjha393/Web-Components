@@ -70,6 +70,18 @@ class Tooltip extends HTMLElement {
 		this.shadowRoot!.appendChild(tooltipIcon)
 	}
 
+	public attributeChangedCallback(
+		name: string,
+		oldValue: string,
+		newValue: string
+	) {
+		console.log(name, oldValue, newValue)
+	}
+
+	static get observedAttributes() {
+		return ['text']
+	}
+
 	private showTooltip() {
 		this.tooltipContainer = document.createElement('div')
 		this.tooltipContainer.textContent = this.tooltipText
