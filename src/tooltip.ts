@@ -1,5 +1,6 @@
 class Tooltip extends HTMLElement {
 	private tooltipContainer!: HTMLDivElement
+	private tooltipIcon!: HTMLSpanElement
 	private tooltipText!: string
 
 	// Here i can access normal light Dom and shadowRoot
@@ -61,10 +62,10 @@ class Tooltip extends HTMLElement {
 			this.tooltipText = this.getAttribute('text')!
 		}
 
-		const tooltipIcon = this.shadowRoot!.querySelector('span')!
+		this.tooltipIcon = this.shadowRoot!.querySelector('span')!
 
-		tooltipIcon.addEventListener('mouseenter', this.showTooltip.bind(this))
-		tooltipIcon.addEventListener('mouseleave', this.hideTooltip.bind(this))
+		this.tooltipIcon.addEventListener('mouseenter', this.showTooltip.bind(this))
+		this.tooltipIcon.addEventListener('mouseleave', this.hideTooltip.bind(this))
 
 		this.style.position = 'relative'
 	}
@@ -86,14 +87,14 @@ class Tooltip extends HTMLElement {
 		return ['text']
 	}
 
+	public disconnectedCallback() {
+		this.tooltipIcon.removeEventListener('mouseenter', this.showTooltip)
+		this.tooltipIcon.removeEventListener('mouseleave', this.hideTooltip)
+	}
+
 	private showTooltip() {
 		this.tooltipContainer = document.createElement('div')
 		this.tooltipContainer.textContent = this.tooltipText
-
-		// this.tooltipContainer.style.backgroundColor = 'black'
-		// this.tooltipContainer.style.color = 'white'
-		// this.tooltipContainer.style.position = 'absolute'
-		// this.tooltipContainer.style.zIndex = '10'
 		this.shadowRoot!.appendChild(this.tooltipContainer)
 	}
 
