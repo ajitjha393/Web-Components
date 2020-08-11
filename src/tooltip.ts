@@ -1,7 +1,8 @@
 class Tooltip extends HTMLElement {
-	private tooltipContainer!: HTMLDivElement
+	// private tooltipContainer!: HTMLDivElement
 	private tooltipIcon!: HTMLSpanElement
 	private tooltipText!: string
+	private tooltipVisible = false
 
 	// Here i can access normal light Dom and shadowRoot
 	constructor() {
@@ -93,13 +94,26 @@ class Tooltip extends HTMLElement {
 	}
 
 	private showTooltip() {
-		this.tooltipContainer = document.createElement('div')
-		this.tooltipContainer.textContent = this.tooltipText
-		this.shadowRoot!.appendChild(this.tooltipContainer)
+		this.tooltipVisible = true
+		this.render()
 	}
 
 	private hideTooltip() {
-		this.shadowRoot!.removeChild(this.tooltipContainer)
+		this.tooltipVisible = false
+		this.render()
+	}
+
+	private render() {
+		let tooltipContainer = this.shadowRoot!.querySelector('div')
+		if (this.tooltipVisible) {
+			tooltipContainer = document.createElement('div')!
+			tooltipContainer.textContent = this.tooltipText
+			this.shadowRoot!.appendChild(tooltipContainer)
+		} else {
+			if (tooltipContainer) {
+				this.shadowRoot!.removeChild(tooltipContainer)
+			}
+		}
 	}
 }
 
