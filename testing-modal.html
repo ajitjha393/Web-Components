@@ -23,5 +23,14 @@
 
 		<p>Please Confirm your Choice!</p>
 		<button>Show Details & confirm</button>
+
+		<script>
+			const confirmButton = document.querySelector('button')
+			const modal = document.querySelector('bisu-modal')
+
+			confirmButton.addEventListener('click', event => {
+				modal.setAttribute('opened', '')
+			})
+		</script>
 	</body>
 </html>

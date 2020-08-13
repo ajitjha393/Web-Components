@@ -15,6 +15,7 @@ class Modal extends HTMLElement {
 						height: 100vh;
 						background: rgba(0,0,0,0.5);
 						z-index: 10;
+						display: none;	
 
 					}
 
@@ -30,6 +31,7 @@ class Modal extends HTMLElement {
 						display: flex;
 						flex-direction: column;
 						justify-content: space-between;
+						display: none;
 
 					}
 
