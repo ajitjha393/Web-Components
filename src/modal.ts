@@ -28,11 +28,18 @@ class Modal extends HTMLElement {
 						z-index: 100;
 						border-radius: 3px;
 						box-shadow: 0 2px 8px rgba(0,0,0,0.26);
-						display: flex;
 						flex-direction: column;
 						justify-content: space-between;
 						display: none;
 
+					}
+					:host([opened]) #backdrop
+					{
+						display: block;
+					} 
+					
+					:host([opened]) #modal {
+						display: flex;
 					}
 
 					header {
