@@ -124,11 +124,12 @@ class Modal extends HTMLElement {
 		this.isOpen = false
 	}
 
-	private cancel() {
+	private cancel(event: Event) {
 		this.hide()
+		event.target?.dispatchEvent(new Event('cancel'))
 	}
 
-	private confirm() {
+	private confirm(event: Event) {
 		this.hide()
 	}
 }
