@@ -22,33 +22,42 @@ class Modal extends HTMLElement {
 
 					#modal {
 						position: fixed;
-						top: 15vh;
+						top: 10vh;
 						left: 25%;
 						width: 50%;
 						background: white;
 						z-index: 100;
 						border-radius: 3px;
 						box-shadow: 0 2px 8px rgba(0,0,0,0.26);
+						display: flex;
 						flex-direction: column;
 						justify-content: space-between;
-						display: none;
+						opacity: 0;
+						pointer-events: none;
+						transition: all 0.3s ease-out;
 
 					}
 					:host([opened]) #backdrop
 					{
 						display: block;
+						opacity: 1;
+						pointer-events: all;
 					} 
 					
 					:host([opened]) #modal {
-						display: flex;
+						opacity: 1;
+						pointer-events: all;
+						top: 15vh;
 					}
 
 					header {
 						padding: 1rem;
+						border-bottom: 1px solid #ccc;
 					}
 
 					::slotted(h1) {
 						font-size: 1.25rem;
+						margin: 0;
 					}
 
 					#main {
