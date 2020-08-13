@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Modal Component!</title>
+		<script src="build/modal.js"></script>
+		<style>
+			* {
+				box-sizing: border-box;
+			}
+
+			body {
+				margin: 2rem 0;
+				font-family: sans-serif;
+			}
+		</style>
+	</head>
+	<body>
+		<bisu-modal>
+			<h1 slot="title">Please Confirm Action !</h1>
+			<p>Do you want to Continue ?</p>
+		</bisu-modal>
+
+		<p>Please Confirm your Choice!</p>
+		<button>Show Details & confirm</button>
+
+		<script>
+			const confirmButton = document.querySelector('button')
+			const modal = document.querySelector('bisu-modal')
+
+			modal.addEventListener('confirm', event => {
+				console.log('Confirmed ...')
+			})
+
+			modal.addEventListener('cancel', event => {
+				console.log('Cancelled ...')
+			})
+
+			confirmButton.addEventListener('click', event => {
+				// modal.setAttribute('opened', '')
+				if (!this.isOpen) {
+					modal.open()
+					console.log('Opening ... ')
+				}
+			})
+		</script>
+	</body>
+</html>
