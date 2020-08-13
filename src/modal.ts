@@ -79,8 +79,8 @@ class Modal extends HTMLElement {
 					</section>
 
 					<section id="actions">
-						<button>Okay</button>
-						<button>Cancel</button>
+						<button id="confirm-btn"> Confirm </button>
+						<button id="cancel-btn"> Cancel </button>
 
 					</section>
 
@@ -88,6 +88,12 @@ class Modal extends HTMLElement {
 
 			`
 		}
+
+		const confirmButton = this.shadowRoot!.getElementById('confirm-btn')!
+		const cancelButton = this.shadowRoot!.getElementById('cancel-btn')!
+
+		cancelButton.addEventListener('click', this.cancel.bind(this))
+		confirmButton.addEventListener('click', this.confirm.bind(this))
 	}
 
 	attributeChangedCallback(
@@ -109,6 +115,21 @@ class Modal extends HTMLElement {
 	public open() {
 		this.setAttribute('opened', '')
 		this.isOpen = true
+	}
+
+	public hide() {
+		if (this.hasAttribute('opened')) {
+			this.removeAttribute('opened')
+		}
+		this.isOpen = false
+	}
+
+	private cancel() {
+		this.hide()
+	}
+
+	private confirm() {
+		this.hide()
 	}
 }
 
