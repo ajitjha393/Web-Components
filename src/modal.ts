@@ -91,7 +91,9 @@ class Modal extends HTMLElement {
 
 		const confirmButton = this.shadowRoot!.getElementById('confirm-btn')!
 		const cancelButton = this.shadowRoot!.getElementById('cancel-btn')!
+		const backdrop = this.shadowRoot!.getElementById('backdrop')!
 
+		backdrop.addEventListener('click', this.cancel.bind(this))
 		cancelButton.addEventListener('click', this.cancel.bind(this))
 		confirmButton.addEventListener('click', this.confirm.bind(this))
 	}
