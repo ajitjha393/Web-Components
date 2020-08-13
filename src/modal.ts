@@ -1,4 +1,5 @@
 class Modal extends HTMLElement {
+	public isOpen = false
 	constructor() {
 		super()
 
@@ -89,7 +90,26 @@ class Modal extends HTMLElement {
 		}
 	}
 
-	connectedCallback() {}
+	attributeChangedCallback(
+		_name: string,
+		_oldValue: string,
+		_newValue: string
+	) {
+		if (this.hasAttribute('opened')) {
+			this.isOpen = true
+		} else {
+			this.isOpen = false
+		}
+	}
+
+	static get observedAttributes() {
+		return ['opened']
+	}
+
+	public open() {
+		this.setAttribute('opened', '')
+		this.isOpen = true
+	}
 }
 
 customElements.define('bisu-modal', Modal)

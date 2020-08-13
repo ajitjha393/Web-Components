@@ -29,7 +29,11 @@
 			const modal = document.querySelector('bisu-modal')
 
 			confirmButton.addEventListener('click', event => {
-				modal.setAttribute('opened', '')
+				// modal.setAttribute('opened', '')
+				if (!this.isOpen) {
+					modal.open()
+					console.log('Opening ... ')
+				}
 			})
 		</script>
 	</body>
