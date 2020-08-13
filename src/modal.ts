@@ -71,7 +71,7 @@ class Modal extends HTMLElement {
 				<div id="backdrop"></div>
 				<div id="modal">
 					<header>
-						<h1>Please Confirm !</h1>
+						<slot name="title">Default Modal Content !</slot>
 					</header>	
 
 					<section id="main">
